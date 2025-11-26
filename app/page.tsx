@@ -1,5 +1,5 @@
 "use client";
-
+import GradualBlur from '../components/GradualBlur';
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -28,6 +28,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
+      
       {/* Background wave patterns */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full opacity-30">
@@ -38,6 +39,7 @@ export default function Home() {
       </div>
 
       <div className="relative z-10 pt-24">
+         
         <Header />
         <Hero />
         
@@ -77,6 +79,8 @@ export default function Home() {
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
       />
+      
+      
     </main>
   );
 }

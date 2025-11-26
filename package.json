@@ -9,16 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+=======
     "@react-email/components": "^1.0.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
     "@types/nodemailer": "^7.0.4",
+>>>>>>> 82de4285578690d19ded28d29dc105156f24ae66
     "framer-motion": "^12.23.24",
+    "lucide-react": "^0.554.0",
+    "mathjs": "^14.9.1",
     "next": "^14.2.5",
     "nodemailer": "^7.0.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+<<<<<<< HEAD
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
+=======
     "resend": "^6.5.2"
+>>>>>>> 82de4285578690d19ded28d29dc105156f24ae66
   },
   "devDependencies": {
     "@types/node": "^20.14.10",

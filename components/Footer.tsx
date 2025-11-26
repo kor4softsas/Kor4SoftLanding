@@ -19,6 +19,7 @@ export default function Footer() {
           {/* Columna 1: Logo y descripción */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 bg-white rounded-full">
               <Image
                 src="/Logo.png"
                 alt="Kor4Soft Logo"
@@ -26,6 +27,8 @@ export default function Footer() {
                 height={40}
                 className="object-contain mix-blend-multiply bg-white rounded-lg p-1"
               />
+
+              </div>
               <span className="text-xl font-bold text-white">Kor4Soft</span>
             </div>
             <p className="text-sm leading-relaxed mb-4">
@@ -34,7 +37,7 @@ export default function Footer() {
             {/* Redes sociales */}
             <div className="flex gap-3">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/share/p/17k94rcDJb/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors"
@@ -45,7 +48,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/kor4soft?igsh=MXRqeXNlZ3YycHc0dw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors"
@@ -67,7 +70,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://github.com"
+                href="github.com/kor4softsas/Kor4SoftLanding"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors"
