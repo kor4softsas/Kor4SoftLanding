@@ -50,98 +50,74 @@ export default function Header() {
   }
 
   return (
-    <>
-      <header className="fixed top-6 left-0 right-0 z-50 pointer-events-none">
-        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          <div className="flex justify-center">
-            <glass-element
-              auto-size="true"
-              radius="24"
-              depth="8"
-              blur="3"
-              strength="60"
-              background-color="rgba(255, 255, 255, 0.55)"
-              chromatic-aberration="1"
-              min-width="300"
-              min-height="60"
-              style={{
-                '--glass-padding': '12px 32px',
-                pointerEvents: 'auto',
-              } as any}
-            >
-              <div className="flex items-center justify-center gap-6 sm:gap-8 lg:gap-12">
-                {/* Links izquierda */}
-                <nav className="hidden md:flex items-center gap-4 lg:gap-6">
-                  <a
-                    href="#sobre-nosotros"
-                    className="text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
-                  >
-                    Sobre nosotros
-                  </a>
-                  <a
-                    href="#servicios"
-                    className="text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
-                  >
-                    Servicios
-                  </a>
-                </nav>
+    <header className="fixed top-4 md:top-6 left-0 right-0 z-50 pointer-events-none">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div className="flex justify-center">
+          <glass-element
+            auto-size="true"
+            radius="24"
+            depth="8"
+            blur="5"
+            strength="60"
+            background-color="rgba(255, 255, 255, 0.55)"
+            chromatic-aberration="1"
+            min-width="300"
+            min-height="60"
+            style={{
+              '--glass-padding': '12px 32px',
+              pointerEvents: 'auto',
+            } as any}
+          >
+            <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8 lg:gap-12">
+              {/* Links izquierda */}
+              <nav className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+                <a
+                  href="#sobre-nosotros"
+                  className="text-xs sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
+                >
+                  <span className="hidden md:inline">Sobre nosotros</span>
+                  <span className="md:hidden">Info</span>
+                </a>
+                <a
+                  href="#servicios"
+                  className="text-xs sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
+                >
+                  Servicios
+                </a>
+              </nav>
 
-                {/* Logo Centro */}
-                <div className="flex items-center flex-shrink-0">
-                  <Image
-                    src="/Logo.png"
-                    alt="Kor4Soft Logo"
-                    width={48}
-                    height={48}
-                    className="object-contain mix-blend-multiply"
-                  />
-                </div>
-
-                {/* Links derecha */}
-                <nav className="hidden md:flex items-center gap-4 lg:gap-6">
-                  <a
-                    href="#portfolio"
-                    className="text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
-                  >
-                    Proyectos
-                  </a>
-                  <a
-                    href="#contacto"
-                    className="text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
-                  >
-                    Contacto
-                  </a>
-                </nav>
+              {/* Logo Centro */}
+              <div className="flex items-center flex-shrink-0">
+                <Image
+                  src="/Logo.png"
+                  alt="Kor4Soft Logo"
+                  width={48}
+                  height={48}
+                  className="object-contain mix-blend-multiply w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+                />
               </div>
-            </glass-element>
-          </div>
-        </div>
-      </header>
 
-      {/* Versión móvil - navbar simple sin glass effect */}
-      <div className="md:hidden fixed top-4 left-4 right-4 z-50 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-slate-200/50 px-4 py-3">
-        <div className="flex items-center justify-between">
-          <Image
-            src="/Logo.png"
-            alt="Kor4Soft Logo"
-            width={36}
-            height={36}
-            className="object-contain mix-blend-multiply"
-          />
-          <nav className="flex items-center gap-3 text-xs">
-            <a href="#sobre-nosotros" className="text-slate-700 hover:text-slate-900 font-medium">
-              Info
-            </a>
-            <a href="#servicios" className="text-slate-700 hover:text-slate-900 font-medium">
-              Servicios
-            </a>
-            <a href="#portfolio" className="text-slate-700 hover:text-slate-900 font-medium">
-              Proyectos
-            </a>
-          </nav>
+              {/* Links derecha */}
+              <nav className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+                <a
+                  href="#portfolio"
+                  className="text-xs sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
+                >
+                  Proyectos
+                </a>
+                <a
+                  href="#contacto"
+                  className="text-xs sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
+                >
+                  <span className="hidden sm:inline">Contacto</span>
+                  <span className="sm:hidden">Info</span>
+                </a>
+              </nav>
+            </div>
+          </glass-element>
         </div>
       </div>
-    </>
+    </header>
   );
 }
 
