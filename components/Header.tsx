@@ -50,7 +50,7 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-4 md:top-6 left-0 right-0 z-50 pointer-events-none">
+    <header className="fixed top-4 md:top-6 left-0 right-0 z-[60] pointer-events-none">
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="flex justify-center">
           <glass-element
