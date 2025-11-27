@@ -64,23 +64,23 @@ export default function Header() {
             min-width="300"
             min-height="60"
             style={{
-              '--glass-padding': '12px 32px',
+              '--glass-padding': '16px 24px',
               pointerEvents: 'auto',
             } as any}
           >
-            <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8 lg:gap-12">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-8 lg:gap-12">
               {/* Links izquierda */}
-              <nav className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+              <nav className="flex items-center gap-3 sm:gap-3 md:gap-4 lg:gap-6">
                 <a
                   href="#sobre-nosotros"
-                  className="text-xs sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
+                  className="text-sm sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
                 >
                   <span className="hidden md:inline">Sobre nosotros</span>
                   <span className="md:hidden">Info</span>
                 </a>
                 <a
                   href="#servicios"
-                  className="text-xs sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
+                  className="text-sm sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
                 >
                   Servicios
                 </a>
@@ -93,21 +93,21 @@ export default function Header() {
                   alt="Kor4Soft Logo"
                   width={48}
                   height={48}
-                  className="object-contain mix-blend-multiply w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+                  className="object-contain mix-blend-multiply w-10 h-10 sm:w-10 sm:h-10 md:w-12 md:h-12"
                 />
               </div>
 
               {/* Links derecha */}
-              <nav className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+              <nav className="flex items-center gap-3 sm:gap-3 md:gap-4 lg:gap-6">
                 <a
                   href="#portfolio"
-                  className="text-xs sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
+                  className="text-sm sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
                 >
                   Proyectos
                 </a>
                 <a
                   href="#contacto"
-                  className="text-xs sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
+                  className="text-sm sm:text-sm lg:text-base text-slate-700 hover:text-slate-900 font-medium transition-colors whitespace-nowrap"
                 >
                   <span className="hidden sm:inline">Contacto</span>
                   <span className="sm:hidden">Info</span>
