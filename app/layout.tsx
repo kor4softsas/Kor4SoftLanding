@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script src="/js/displacement-utils.js" strategy="beforeInteractive" />
+        <Script src="/js/glass-element.js" strategy="beforeInteractive" />
+      </body>
     </html>
   );
 }
