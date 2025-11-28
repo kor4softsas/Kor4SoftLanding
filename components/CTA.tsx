@@ -4,7 +4,7 @@ import { InView } from "./InView";
 
 export default function CTA() {
   return (
-    <section className="relative w-full py-20 lg:py-28 overflow-hidden">
+    <section id="contacto" className="relative w-full py-20 lg:py-28 overflow-hidden">
       <div className="absolute inset-0 bg-slate-900">
         {/* Abstract Pattern */}
         <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
