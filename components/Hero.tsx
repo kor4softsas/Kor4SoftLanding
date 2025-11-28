@@ -90,7 +90,7 @@ export default function Hero() {
           <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed font-medium">
             Transformamos ideas en experiencias digitales excepcionales.
             <span className="block mt-2 text-slate-500 font-normal">
-              Desarrollo web y móvil de alto impacto.
+              Desarrollo web y móvil de alto impacto en Colombia.
             </span>
           </p>
 
