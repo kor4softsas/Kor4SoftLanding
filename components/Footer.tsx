@@ -67,7 +67,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://github.com/kor4softsas/Kor4SoftLanding.com"
+                href="https://github.com/kor4softsas"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors"
