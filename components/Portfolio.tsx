@@ -6,11 +6,12 @@ export default function Portfolio() {
   const proyectos = [
     {
       id: 1,
-      nombre: "Sistema de Gestión Empresarial",
+      nombre: "Fitovida",
       categoria: "Desarrollo web",
-      descripcion: "Plataforma web completa para la gestión de inventarios, ventas y reportes en tiempo real.",
-      tecnologias: ["React", "Node.js", "MongoDB"],
-      imagen: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      descripcion: "Plataforma web completa para la venta, y gestión de prodcutos de  medicina natural con pasarelas de apgo integradas y autenticación.",
+      tecnologias: ["Next.js ", "Node.js", "MySQL"],
+      imagen: "/fitovida-products.png",
+      href: "https://fitovida.k4soft.com",
       resultados: "Aumento del 40% en productividad",
     },
     {
@@ -57,9 +58,11 @@ export default function Portfolio() {
             }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
           >
+          <a href={proyecto.href} target="_blank">
+
             <div
               className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-2xl hover:border-slate-300 transition-all duration-300 flex flex-col h-full"
-            >
+              >
               {/* Imagen del proyecto */}
               <div className="relative h-48 sm:h-56 bg-slate-200 overflow-hidden">
                 <img
@@ -89,8 +92,8 @@ export default function Portfolio() {
               <div className="flex flex-wrap gap-2 mb-4">
                 {proyecto.tecnologias.map((tech, index) => (
                   <span
-                    key={index}
-                    className="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full border border-slate-200"
+                  key={index}
+                  className="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full border border-slate-200"
                   >
                     {tech}
                   </span>
@@ -108,6 +111,7 @@ export default function Portfolio() {
               </div>
             </div>
           </div>
+                </a>
           </InView>
         ))}
       </div>
