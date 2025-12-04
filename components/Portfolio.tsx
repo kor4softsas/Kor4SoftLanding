@@ -8,7 +8,7 @@ export default function Portfolio() {
       id: 1,
       nombre: "Fitovida",
       categoria: "Desarrollo web",
-      descripcion: "Plataforma web completa para la venta, y gestión de prodcutos de  medicina natural con pasarelas de apgo integradas y autenticación.",
+      descripcion: "Plataforma web completa para la venta, y gestión de productos de  medicina natural con pasarelas de pago integradas y autenticación.",
       tecnologias: ["Next.js ", "Node.js", "MySQL"],
       imagen: "/fitovida-products.png",
       href: "https://fitovida.k4soft.com",
