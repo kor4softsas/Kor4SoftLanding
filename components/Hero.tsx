@@ -124,7 +124,7 @@ export default function Hero() {
                     <div className="bg-white rounded-xl shadow-xl border border-slate-200 p-3 relative">
                       <div className="absolute left-6 sm:left-1/2 sm:-translate-x-1/2 -bottom-2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45"></div>
                       <div className="flex items-center gap-2 mb-1.5">
-                        <div className={`w-6 h-6 ${techData.react.color} rounded-md flex items-center justify-center`}><span className="text-white text-xs font-bold">R</span></div>
+                        <div className={`w-6 h-6 ${techData.react.color} rounded-lg flex items-center justify-center`}><span className="text-white text-xs font-bold">R</span></div>
                         <h4 className="font-bold text-slate-900 text-sm">{techData.react.name}</h4>
                       </div>
                       <p className="text-xs text-slate-600 mb-1">{techData.react.description}</p>
@@ -147,7 +147,7 @@ export default function Hero() {
                     <div className="bg-white rounded-xl shadow-xl border border-slate-200 p-3 relative">
                       <div className="absolute left-12 sm:left-1/2 sm:-translate-x-1/2 -bottom-2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45"></div>
                       <div className="flex items-center gap-2 mb-1.5">
-                        <div className={`w-6 h-6 ${techData.nextjs.color} rounded-md flex items-center justify-center`}><span className="text-white text-xs font-bold">N</span></div>
+                        <div className={`w-6 h-6 ${techData.nextjs.color} rounded-lg flex items-center justify-center`}><span className="text-white text-xs font-bold">N</span></div>
                         <h4 className="font-bold text-slate-900 text-sm">{techData.nextjs.name}</h4>
                       </div>
                       <p className="text-xs text-slate-600 mb-1">{techData.nextjs.description}</p>
@@ -180,7 +180,7 @@ export default function Hero() {
                     <div className="bg-white rounded-xl shadow-xl border border-slate-200 p-3 relative">
                       <div className="absolute right-12 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 -bottom-2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45"></div>
                       <div className="flex items-center gap-2 mb-1.5">
-                        <div className={`w-6 h-6 ${techData.laravel.color} rounded-md flex items-center justify-center`}><span className="text-white text-xs font-bold">L</span></div>
+                        <div className={`w-6 h-6 ${techData.laravel.color} rounded-lg flex items-center justify-center`}><span className="text-white text-xs font-bold">L</span></div>
                         <h4 className="font-bold text-slate-900 text-sm">{techData.laravel.name}</h4>
                       </div>
                       <p className="text-xs text-slate-600 mb-1">{techData.laravel.description}</p>
@@ -203,7 +203,7 @@ export default function Hero() {
                     <div className="bg-white rounded-xl shadow-xl border border-slate-200 p-3 relative">
                       <div className="absolute right-6 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 -bottom-2 w-3 h-3 bg-white border-r border-b border-slate-200 rotate-45"></div>
                       <div className="flex items-center gap-2 mb-1.5">
-                        <div className={`w-6 h-6 ${techData.nodejs.color} rounded-md flex items-center justify-center`}><span className="text-white text-xs font-bold">N</span></div>
+                        <div className={`w-6 h-6 ${techData.nodejs.color} rounded-lg flex items-center justify-center`}><span className="text-white text-xs font-bold">N</span></div>
                         <h4 className="font-bold text-slate-900 text-sm">{techData.nodejs.name}</h4>
                       </div>
                       <p className="text-xs text-slate-600 mb-1">{techData.nodejs.description}</p>

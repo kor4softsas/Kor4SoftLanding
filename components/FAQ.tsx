@@ -55,7 +55,7 @@ export default function FAQ() {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             {/* Pregunta */}
             <button

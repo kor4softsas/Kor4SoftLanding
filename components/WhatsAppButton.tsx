@@ -36,7 +36,7 @@ export default function WhatsAppButton() {
       </svg>
 
       {/* Tooltip - visible en hover en desktop */}
-      <span className="hidden sm:block absolute right-full mr-3 px-3 py-2 bg-slate-900 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+      <span className="hidden sm:block absolute right-full mr-3 px-3 py-2 bg-slate-900 text-white text-sm font-medium rounded-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
         ¿Necesitas ayuda?
       </span>
     </motion.button>

@@ -24,7 +24,7 @@ export default function Footer() {
                 alt="Kor4Soft Logo"
                 width={40}
                 height={40}
-                className="object-contain mix-blend-multiply bg-white rounded-lg p-1"
+                className="object-contain mix-blend-multiply bg-white rounded-xl p-1"
               />
               <span className="text-xl font-bold text-white">Kor4Soft</span>
             </div>
@@ -37,7 +37,7 @@ export default function Footer() {
                 href="https://www.facebook.com/share/p/17k94rcDJb/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-xl flex items-center justify-center transition-colors"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -48,7 +48,7 @@ export default function Footer() {
                 href="https://www.instagram.com/kor4soft?igsh=MXRqeXNlZ3YycHc0dw=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-xl flex items-center justify-center transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-xl flex items-center justify-center transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -70,7 +70,7 @@ export default function Footer() {
                 href="https://github.com/kor4softsas"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-xl flex items-center justify-center transition-colors"
                 aria-label="GitHub"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
