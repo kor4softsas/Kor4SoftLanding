@@ -220,7 +220,7 @@ export default function BentoGrid() {
               <div className="flex flex-col items-center justify-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 border border-white/5 hover:border-white/10 group/item">
                 <div className="w-10 h-10 relative group-hover/item:scale-110 transition-transform duration-300">
                   <Image 
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" 
+                    src="/icons/react.svg" 
                     alt="React" 
                     width={40} 
                     height={40} 
@@ -235,7 +235,7 @@ export default function BentoGrid() {
               <div className="flex flex-col items-center justify-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 border border-white/5 hover:border-white/10 group/item">
                 <div className="w-10 h-10 relative group-hover/item:scale-110 transition-transform duration-300">
                   <Image 
-                    src="https://www.svgrepo.com/show/354113/nextjs-icon.svg" 
+                    src="/icons/nextjs.svg" 
                     alt="Next.js" 
                     width={40} 
                     height={40} 
@@ -250,7 +250,7 @@ export default function BentoGrid() {
               <div className="flex flex-col items-center justify-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 border border-white/5 hover:border-white/10 group/item">
                 <div className="w-10 h-10 relative group-hover/item:scale-110 transition-transform duration-300">
                   <Image 
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" 
+                    src="/icons/laravel.svg" 
                     alt="Laravel" 
                     width={40} 
                     height={40} 
@@ -265,7 +265,7 @@ export default function BentoGrid() {
               <div className="flex flex-col items-center justify-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 border border-white/5 hover:border-white/10 group/item">
                 <div className="w-10 h-10 relative group-hover/item:scale-110 transition-transform duration-300">
                   <Image 
-                    src="https://www.svgrepo.com/show/354119/nodejs-icon.svg" 
+                    src="/icons/nodejs.svg" 
                     alt="Node.js" 
                     width={40} 
                     height={40} 

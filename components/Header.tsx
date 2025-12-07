@@ -17,32 +17,7 @@ export default function Header() {
 
   useEffect(() => {
     setIsClient(true);
-
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-
-      if (anchor && anchor.getAttribute('href')?.startsWith('#')) {
-        const href = anchor.getAttribute('href');
-        if (href) {
-          const element = document.querySelector(href);
-          if (element) {
-            e.preventDefault();
-            const headerOffset = 120; // Altura del navbar flotante
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
-        }
-      }
-    };
-
-    document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
+    // El manejo de anchor links ahora es global via SmoothScroll/Lenis
   }, []);
 
   if (!isClient) {

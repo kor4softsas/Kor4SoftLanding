@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "Kor4Soft | Desarrollo de Software y Apps Móviles en Colombia",
@@ -68,7 +69,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
+        {/* Scripts necesarios para el navbar glass-element */}
         <Script src="/js/displacement-utils.js" strategy="beforeInteractive" />
         <Script src="/js/glass-element.js" strategy="beforeInteractive" />
       </body>

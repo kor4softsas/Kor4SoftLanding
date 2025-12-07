@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+
+// Importar ParticlesBackground directamente (es crítico para el hero)
 import ParticlesBackground from "./ParticlesBackground";
 
 // Registrar plugins
@@ -208,7 +210,7 @@ export default function Hero() {
               </AnimatePresence>
               <div className={`absolute -inset-2 bg-blue-50 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'react' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
               <button onClick={() => handleTechClick('react')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'react' ? 'scale-110 border-blue-300 ring-2 ring-blue-200' : 'border-slate-100 hover:scale-110'}`}>
-                <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="React" width={32} height={32} className="w-8 h-8 sm:w-10 sm:h-10 object-contain animate-spin-slow" unoptimized />
+                <Image src="/icons/react.svg" alt="React" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 object-contain animate-spin-slow" />
               </button>
             </div>
 
@@ -231,7 +233,7 @@ export default function Hero() {
               </AnimatePresence>
               <div className={`absolute -inset-2 bg-slate-200 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'nextjs' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
               <button onClick={() => handleTechClick('nextjs')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'nextjs' ? 'scale-110 border-slate-400 ring-2 ring-slate-300' : 'border-slate-100 hover:scale-110'}`}>
-                <Image src="https://www.svgrepo.com/show/354113/nextjs-icon.svg" alt="Next.js" width={32} height={32} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" unoptimized />
+                <Image src="/icons/nextjs.svg" alt="Next.js" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </button>
             </div>
 
@@ -264,7 +266,7 @@ export default function Hero() {
               </AnimatePresence>
               <div className={`absolute -inset-2 bg-red-50 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'laravel' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
               <button onClick={() => handleTechClick('laravel')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'laravel' ? 'scale-110 border-red-300 ring-2 ring-red-200' : 'border-slate-100 hover:scale-110'}`}>
-                <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Laravel" width={32} height={32} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" unoptimized />
+                <Image src="/icons/laravel.svg" alt="Laravel" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </button>
             </div>
 
@@ -287,7 +289,7 @@ export default function Hero() {
               </AnimatePresence>
               <div className={`absolute -inset-2 bg-green-50 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'nodejs' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
               <button onClick={() => handleTechClick('nodejs')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'nodejs' ? 'scale-110 border-green-300 ring-2 ring-green-200' : 'border-slate-100 hover:scale-110'}`}>
-                <Image src="https://www.svgrepo.com/show/354119/nodejs-icon.svg" alt="Node.js" width={32} height={32} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" unoptimized />
+                <Image src="/icons/nodejs.svg" alt="Node.js" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </button>
             </div>
 

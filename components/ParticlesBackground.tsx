@@ -19,7 +19,7 @@ function ParticlesBackgroundComponent() {
   const options: ISourceOptions = useMemo(
     () => ({
       fullScreen: false,
-      fpsLimit: 60,
+      fpsLimit: 30, // Reducido para mejor rendimiento
       interactivity: {
         events: {
           onHover: {
@@ -63,21 +63,13 @@ function ParticlesBackgroundComponent() {
         number: {
           density: {
             enable: true,
-            width: 1200,
-            height: 800,
+            width: 1400,
+            height: 900,
           },
-          value: 60,
+          value: 40, // Reducido para mejor rendimiento
         },
         opacity: {
-          value: {
-            min: 0.4,
-            max: 0.7,
-          },
-          animation: {
-            enable: true,
-            speed: 0.5,
-            sync: false,
-          },
+          value: 0.5, // Valor fijo para mejor rendimiento
         },
         shape: {
           type: "circle",
