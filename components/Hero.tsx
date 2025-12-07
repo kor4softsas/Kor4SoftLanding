@@ -1,9 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import ParticlesBackground from "./ParticlesBackground";
+
+// Registrar plugins
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 const techData = {
   react: {
@@ -46,8 +54,73 @@ const tooltipVariants = {
 export default function Hero() {
   const [selectedTech, setSelectedTech] = useState<TechKey | null>(null);
   const handleTechClick = (tech: TechKey) => setSelectedTech(selectedTech === tech ? null : tech);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Efectos Parallax con GSAP ScrollTrigger
+  useGSAP(() => {
+    // Parallax en los blobs de fondo (se mueven más lento que el scroll)
+    gsap.to(".hero-blob-1", {
+      y: 150,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.5,
+      },
+    });
+
+    gsap.to(".hero-blob-2", {
+      y: 100,
+      x: -50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 2,
+      },
+    });
+
+    gsap.to(".hero-blob-3", {
+      y: 200,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    // Parallax en el contenido principal (se mueve ligeramente)
+    gsap.to(".hero-content", {
+      y: 80,
+      opacity: 0.3,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "80% top",
+        scrub: true,
+      },
+    });
+
+    // Tech stack icons parallax sutil
+    gsap.to(".hero-tech-stack", {
+      y: 40,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.2,
+      },
+    });
+  }, { scope: sectionRef });
+
   return (
-    <section className="relative w-full overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32">
+    <section ref={sectionRef} className="relative w-full overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-grid-pattern [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] opacity-20"></div>
 
@@ -56,13 +129,13 @@ export default function Hero() {
         <ParticlesBackground />
       </div>
 
-      {/* Floating Elements Background */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-      <div className="absolute top-20 right-10 w-72 h-72 bg-slate-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gray-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      {/* Floating Elements Background - Con clases para parallax */}
+      <div className="hero-blob-1 absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div className="hero-blob-2 absolute top-20 right-10 w-72 h-72 bg-slate-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div className="hero-blob-3 absolute -bottom-8 left-20 w-72 h-72 bg-gray-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+        <div className="hero-content flex flex-col items-center text-center max-w-4xl mx-auto">
 
           {/* Logo with Glow Effect */}
           <div className="relative mb-8 group">
@@ -114,7 +187,7 @@ export default function Hero() {
           </div>
 
           {/* Tech Stack Floating Icons */}
-          <div className="relative w-full max-w-3xl mx-auto flex items-center justify-center gap-3 xs:gap-4 sm:gap-10 px-2 sm:px-0">
+          <div className="hero-tech-stack relative w-full max-w-3xl mx-auto flex items-center justify-center gap-3 xs:gap-4 sm:gap-10 px-2 sm:px-0">
 
             {/* React */}
             <div className="relative flex flex-col items-center">

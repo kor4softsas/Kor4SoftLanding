@@ -2,6 +2,14 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+// Registrar plugins
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 interface StatProps {
   end: number;
@@ -88,14 +96,61 @@ export default function Stats() {
     },
   ];
 
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Efectos Parallax para Stats
+  useGSAP(() => {
+    // Parallax en los blobs decorativos del fondo
+    gsap.to(".stats-blob-1", {
+      y: -80,
+      x: 40,
+      scale: 1.2,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5,
+      },
+    });
+
+    gsap.to(".stats-blob-2", {
+      y: 60,
+      x: -30,
+      scale: 0.9,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 2,
+      },
+    });
+
+    // Escala sutil del contenedor al entrar en viewport
+    gsap.fromTo(".stats-container", 
+      { scale: 0.95 },
+      {
+        scale: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "top 40%",
+          scrub: 1,
+        },
+      }
+    );
+  }, { scope: sectionRef });
+
   return (
-    <section className="container mx-auto px-4 py-12 sm:py-16 lg:py-20 max-w-7xl">
+    <section ref={sectionRef} className="container mx-auto px-4 py-12 sm:py-16 lg:py-20 max-w-7xl">
       {/* Background decorativo */}
-      <div className="relative bg-gradient-to-br from-slate-700 to-slate-900 rounded-3xl p-8 sm:p-12 lg:p-16 overflow-hidden">
-        {/* Pattern decorativo */}
+      <div className="stats-container relative bg-gradient-to-br from-slate-700 to-slate-900 rounded-3xl p-8 sm:p-12 lg:p-16 overflow-hidden">
+        {/* Pattern decorativo - Con clases para parallax */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="stats-blob-1 absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+          <div className="stats-blob-2 absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
         </div>
 
         {/* Contenido */}

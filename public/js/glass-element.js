@@ -9,7 +9,6 @@
 class GlassElement extends HTMLElement {
     constructor() {
         super();
-        this.clicked = false;
         this.attachShadow({ mode: 'open' });
 
         // Detectar soporte de filtros SVG en backdrop-filter (solo una vez por clase)
@@ -85,7 +84,6 @@ class GlassElement extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.setupEventListeners();
         this.setupResponsive();
 
         // Observer para auto-size
@@ -204,36 +202,9 @@ class GlassElement extends HTMLElement {
         return parseInt(this.getAttribute('min-height')) || 0;
     }
 
-    // Calcular la profundidad dinámica basada en el estado de click
+    // Profundidad estática (sin efecto de click)
     get depth() {
-        return this.baseDepth / (this.clicked ? 0.7 : 1);
-    }
-
-    setupEventListeners() {
-        const glassBox = this.shadowRoot.querySelector('.glass-box');
-
-        glassBox.addEventListener('mousedown', () => {
-            this.clicked = true;
-            this.updateStyles();
-        });
-
-        glassBox.addEventListener('mouseup', () => {
-            this.clicked = false;
-            this.updateStyles();
-        });
-
-        glassBox.addEventListener('mouseleave', () => {
-            this.clicked = false;
-            this.updateStyles();
-        });
-
-        // Prevenir que el evento mouseup se pierda
-        document.addEventListener('mouseup', () => {
-            if (this.clicked) {
-                this.clicked = false;
-                this.updateStyles();
-            }
-        });
+        return this.baseDepth;
     }
 
     updateStyles() {
@@ -355,14 +326,9 @@ class GlassElement extends HTMLElement {
                 .glass-box {
                     background: rgba(255, 255, 255, 0.4);
                     box-shadow: 1px 1px 1px 0px rgba(255,255,255, 0.60) inset, -1px -1px 1px 0px rgba(255,255,255, 0.60) inset, 0px 0px 16px 0px rgba(0,0,0, 0.04);
-                    cursor: pointer;
-                    transition: transform 0.1s ease;
+                    cursor: default;
                     position: relative;
                     ${this.autoSize ? `display: inline-block; width: fit-content; min-width: ${this.minWidth}px; min-height: ${this.minHeight}px;` : ''}
-                }
-
-                .glass-box:active {
-                    transform: scale(0.98);
                 }
 
                 .content {

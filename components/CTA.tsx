@@ -1,15 +1,56 @@
 "use client";
 
+import { useRef } from "react";
 import { InView } from "./InView";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+// Registrar plugins
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 export default function CTA() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Efectos Parallax para CTA
+  useGSAP(() => {
+    // Parallax en los círculos decorativos
+    gsap.to(".cta-blob-1", {
+      y: -100,
+      x: -60,
+      scale: 1.3,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 2,
+      },
+    });
+
+    gsap.to(".cta-blob-2", {
+      y: 80,
+      x: 40,
+      scale: 1.2,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5,
+      },
+    });
+  }, { scope: sectionRef });
+
   return (
-    <section id="contacto" className="relative w-full py-20 lg:py-28 overflow-hidden">
+    <section ref={sectionRef} id="contacto" className="relative w-full py-20 lg:py-28 overflow-hidden">
       <div className="absolute inset-0 bg-slate-900">
         {/* Abstract Pattern */}
         <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+        <div className="cta-blob-1 absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div className="cta-blob-2 absolute bottom-0 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
