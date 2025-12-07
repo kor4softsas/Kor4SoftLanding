@@ -83,14 +83,29 @@ function ParticlesBackgroundComponent() {
     []
   );
 
-  if (!init) return null;
-
   return (
-    <Particles
-      id="tsparticles"
-      options={options}
-      className="absolute inset-0 pointer-events-none"
-    />
+    <>
+      {/* Fondo estático visible inmediatamente mientras cargan las partículas */}
+      <div 
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${init ? 'opacity-0' : 'opacity-100'}`}
+        style={{
+          background: 'radial-gradient(circle at 20% 50%, rgba(148, 163, 184, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(148, 163, 184, 0.1) 0%, transparent 50%)',
+        }}
+      >
+        {/* Puntos estáticos simulando partículas */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle, rgba(148, 163, 184, 0.4) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+        }} />
+      </div>
+      {init && (
+        <Particles
+          id="tsparticles"
+          options={options}
+          className="absolute inset-0 pointer-events-none animate-fade-in"
+        />
+      )}
+    </>
   );
 }
 
