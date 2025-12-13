@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
+
+const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), {
+  ssr: false,
+});
 
 const inter = Inter({ 
   subsets: ["latin"],
