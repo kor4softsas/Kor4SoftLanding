@@ -9,7 +9,7 @@ export default function BentoGrid() {
         <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
           Nuestros servicios
         </h2>
-        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-slate-600 mx-auto mb-6 rounded-full"></div>
+        <div className="w-24 h-1 bg-slate-700 mx-auto mb-6"></div>
         <p className="text-lg sm:text-xl text-slate-700 max-w-2xl mx-auto font-semibold">
           Soluciones tecnológicas adaptadas a tus necesidades
         </p>
