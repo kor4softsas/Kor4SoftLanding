@@ -48,6 +48,46 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Custom Scrollbar - Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9; /* slate-100 */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #475569 0%, #334155 100%); /* slate-600 to slate-700 */
+  border-radius: 10px;
+  border: 2px solid #f1f5f9; /* slate-100 - creates padding effect */
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%); /* slate-700 to slate-800 */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); /* slate-800 to slate-900 */
+}
+
+/* Custom Scrollbar - Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #f1f5f9; /* thumb color, track color */
+}
+
+/* Smooth scrollbar transition for Firefox */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #475569 #f1f5f9;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
