@@ -42,7 +42,7 @@ export default function Portfolio() {
           Proyectos destacados
         </h2>
         <div className="w-24 h-1 bg-slate-700 mx-auto mb-5"></div>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-medium">
           Casos de éxito que demuestran nuestra experiencia y compromiso con la excelencia
         </p>
       </div>
@@ -84,7 +84,7 @@ export default function Portfolio() {
                 {proyecto.nombre}
               </h3>
               
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-4 line-clamp-3">
+              <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 line-clamp-3">
                 {proyecto.descripcion}
               </p>
 
@@ -93,7 +93,7 @@ export default function Portfolio() {
                 {proyecto.tecnologias.map((tech, index) => (
                   <span
                   key={index}
-                  className="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full border border-slate-200"
+                  className="px-3 py-1 bg-slate-100 text-slate-800 text-xs font-semibold rounded-full border border-slate-200 hover:bg-slate-200 transition-colors"
                   >
                     {tech}
                   </span>

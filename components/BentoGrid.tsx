@@ -6,11 +6,11 @@ export default function BentoGrid() {
     <section id="servicios" className="container mx-auto px-4 py-20 sm:py-24 max-w-7xl relative z-10">
       {/* Header mejorado */}
       <div className="text-center mb-16 sm:mb-20">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
           Nuestros servicios
         </h2>
         <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-slate-600 mx-auto mb-6 rounded-full"></div>
-        <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-medium">
+        <p className="text-lg sm:text-xl text-slate-700 max-w-2xl mx-auto font-semibold">
           Soluciones tecnológicas adaptadas a tus necesidades
         </p>
       </div>
@@ -41,7 +41,7 @@ export default function BentoGrid() {
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors">Desarrollo web</h3>
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8">
+              <p className="text-slate-700 text-base sm:text-lg leading-relaxed mb-8">
                 Aplicaciones web modernas, escalables y de alto rendimiento que impulsan tu negocio al siguiente nivel.
               </p>
 
@@ -53,7 +53,10 @@ export default function BentoGrid() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-base text-slate-700 font-medium">React y Next.js</span>
+                  <span className="text-base text-slate-800 font-semibold flex items-center gap-2">
+                    <span className="w-2 h-2 bg-react rounded-full"></span>
+                    React y Next.js
+                  </span>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -61,7 +64,10 @@ export default function BentoGrid() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-base text-slate-700 font-medium">Laravel y Node.js</span>
+                  <span className="text-base text-slate-800 font-semibold flex items-center gap-2">
+                    <span className="w-2 h-2 bg-laravel rounded-full"></span>
+                    Laravel y Node.js
+                  </span>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -69,7 +75,7 @@ export default function BentoGrid() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-base text-slate-700 font-medium">Responsive y optimizado</span>
+                  <span className="text-base text-slate-800 font-semibold">Responsive y optimizado</span>
                 </div>
               </div>
 
@@ -108,7 +114,7 @@ export default function BentoGrid() {
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors">Aplicaciones móviles</h3>
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8">
+              <p className="text-slate-700 text-base sm:text-lg leading-relaxed mb-8">
                 Apps nativas e híbridas para iOS y Android que conectan con tu audiencia donde estén.
               </p>
 
@@ -172,7 +178,7 @@ export default function BentoGrid() {
               </svg>
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-3">Automatización</h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
+            <p className="text-slate-700 text-sm leading-relaxed">
               Optimiza procesos y ahorra tiempo con soluciones automatizadas inteligentes.
             </p>
           </div>
@@ -193,7 +199,7 @@ export default function BentoGrid() {
               </svg>
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-3">Consultoría</h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
+            <p className="text-slate-700 text-sm leading-relaxed">
               Asesoría técnica especializada para llevar tu proyecto al éxito.
             </p>
           </div>
@@ -286,7 +292,7 @@ export default function BentoGrid() {
 
         <div className="text-center mb-12">
           <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Nuestro proceso</h3>
-          <p className="text-slate-600 text-base sm:text-lg">De la idea a la realidad en 4 pasos simples</p>
+          <p className="text-slate-700 text-base sm:text-lg font-medium">De la idea a la realidad en 4 pasos simples</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative">
@@ -301,7 +307,7 @@ export default function BentoGrid() {
               </div>
             </div>
             <h4 className="font-bold text-slate-900 text-lg mb-3">Consulta</h4>
-            <p className="text-slate-600 text-sm leading-relaxed max-w-xs">
+            <p className="text-slate-700 text-sm leading-relaxed max-w-xs">
               Analizamos tus necesidades y definimos los objetivos del proyecto.
             </p>
           </div>
@@ -314,7 +320,7 @@ export default function BentoGrid() {
               </div>
             </div>
             <h4 className="font-bold text-slate-900 text-lg mb-3">Diseño</h4>
-            <p className="text-slate-600 text-sm leading-relaxed max-w-xs">
+            <p className="text-slate-700 text-sm leading-relaxed max-w-xs">
               Creamos la arquitectura y el diseño visual de tu solución.
             </p>
           </div>
@@ -327,7 +333,7 @@ export default function BentoGrid() {
               </div>
             </div>
             <h4 className="font-bold text-slate-900 text-lg mb-3">Desarrollo</h4>
-            <p className="text-slate-600 text-sm leading-relaxed max-w-xs">
+            <p className="text-slate-700 text-sm leading-relaxed max-w-xs">
               Implementamos el código con las mejores prácticas y tecnologías.
             </p>
           </div>
@@ -340,7 +346,7 @@ export default function BentoGrid() {
               </div>
             </div>
             <h4 className="font-bold text-slate-900 text-lg mb-3">Entrega</h4>
-            <p className="text-slate-600 text-sm leading-relaxed max-w-xs">
+            <p className="text-slate-700 text-sm leading-relaxed max-w-xs">
               Lanzamos tu proyecto y brindamos soporte continuo.
             </p>
           </div>

@@ -41,7 +41,7 @@ export default function Testimonials() {
           Lo que dicen nuestros clientes
         </h2>
         <div className="w-24 h-1 bg-slate-700 mx-auto mb-5"></div>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-medium">
           La satisfacción de nuestros clientes es nuestra mejor carta de presentación
         </p>
       </div>
@@ -76,7 +76,7 @@ export default function Testimonials() {
               </div>
 
               {/* Texto del testimonio */}
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 flex-1">
+              <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 flex-1">
                 "{testimonial.text}"
               </p>
 

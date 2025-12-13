@@ -1,66 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
 
 interface ContactFormProps {
   isOpen: boolean;
   onClose: () => void;
+  triggerButton?: HTMLButtonElement | null;
 }
 
-// Variantes de animación para el modal
-const overlayVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { duration: 0.3, ease: "easeOut" }
-  },
-  exit: { 
-    opacity: 0,
-    transition: { duration: 0.2, ease: "easeIn", delay: 0.1 }
-  }
-};
-
-const modalVariants: Variants = {
-  hidden: { 
-    opacity: 0, 
-    scale: 0.95,
-    y: 30
-  },
-  visible: { 
-    opacity: 1, 
-    scale: 1, 
-    y: 0,
-    transition: { 
-      type: "spring",
-      stiffness: 300,
-      damping: 25,
-      mass: 0.8,
-      staggerChildren: 0.07,
-      delayChildren: 0.1
-    }
-  },
-  exit: { 
-    opacity: 0, 
-    scale: 0.97,
-    y: 15,
-    transition: { 
-      duration: 0.2,
-      ease: [0.4, 0, 1, 1]
-    }
-  }
-};
-
-const contentVariants: Variants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { type: "spring", stiffness: 400, damping: 25 }
-  }
-};
-
-export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
+export default function ContactForm({ isOpen, onClose, triggerButton }: ContactFormProps) {
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -71,6 +21,8 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
 
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   const subjectOptions = [
     { value: "desarrollo-web", label: "Desarrollo Web" },
@@ -130,17 +82,154 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     }
   };
 
+  // Animación de apertura con GSAP
+  useEffect(() => {
+    if (isOpen && modalRef.current && overlayRef.current) {
+      const modal = modalRef.current;
+      const overlay = overlayRef.current;
+      
+      // Obtener posición del botón trigger
+      let startX = window.innerWidth / 2;
+      let startY = window.innerHeight / 2;
+      
+      if (triggerButton) {
+        const buttonRect = triggerButton.getBoundingClientRect();
+        startX = buttonRect.left + buttonRect.width / 2;
+        startY = buttonRect.top + buttonRect.height / 2;
+      }
+
+      // Timeline de animación
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" }
+      });
+
+      // Estado inicial del modal
+      gsap.set(modal, {
+        scale: 0,
+        x: startX - window.innerWidth / 2,
+        y: startY - window.innerHeight / 2,
+        opacity: 0,
+        borderRadius: "50%",
+        rotation: -15,
+      });
+
+      // Animación del overlay
+      tl.to(overlay, {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out"
+      }, 0);
+
+      // Animación del modal - efecto de explosión suave desde el botón
+      tl.to(modal, {
+        scale: 1,
+        x: 0,
+        y: 0,
+        opacity: 1,
+        borderRadius: "16px",
+        rotation: 0,
+        duration: 0.8,
+        ease: "elastic.out(1, 0.75)",
+      }, 0.1);
+
+      // Animación de los elementos internos
+      const elements = modal.querySelectorAll('.animate-in');
+      tl.fromTo(elements,
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "back.out(1.7)",
+        },
+        0.4
+      );
+
+      // Efecto de brillo/glow al final
+      tl.fromTo(modal,
+        {
+          boxShadow: "0 0 0 0 rgba(71, 85, 105, 0)",
+        },
+        {
+          boxShadow: "0 25px 50px -12px rgba(71, 85, 105, 0.25)",
+          duration: 0.3,
+        },
+        0.6
+      );
+    }
+  }, [isOpen, triggerButton]);
+
+  // Animación de cierre
+  const handleClose = () => {
+    if (modalRef.current && overlayRef.current) {
+      const modal = modalRef.current;
+      const overlay = overlayRef.current;
+      
+      // Obtener posición del botón trigger para cerrar hacia él
+      let endX = 0;
+      let endY = 0;
+      
+      if (triggerButton) {
+        const buttonRect = triggerButton.getBoundingClientRect();
+        endX = buttonRect.left + buttonRect.width / 2 - window.innerWidth / 2;
+        endY = buttonRect.top + buttonRect.height / 2 - window.innerHeight / 2;
+      }
+
+      const tl = gsap.timeline({
+        onComplete: () => onClose()
+      });
+
+      // Animar elementos internos primero
+      const elements = modal.querySelectorAll('.animate-in');
+      tl.to(elements, {
+        opacity: 0,
+        y: -20,
+        scale: 0.95,
+        duration: 0.2,
+        stagger: 0.02,
+        ease: "power2.in"
+      });
+
+      // Contraer el modal hacia el botón
+      tl.to(modal, {
+        scale: 0,
+        x: endX,
+        y: endY,
+        opacity: 0,
+        borderRadius: "50%",
+        rotation: 15,
+        duration: 0.5,
+        ease: "back.in(1.7)",
+      }, 0.15);
+
+      // Fade out del overlay
+      tl.to(overlay, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.in"
+      }, 0.2);
+    } else {
+      onClose();
+    }
+  };
+
   // Cerrar modal con tecla Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
-        onClose();
+        handleClose();
       }
     };
 
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
   // Prevenir scroll del body cuando el modal está abierto
   useEffect(() => {
@@ -154,34 +243,28 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     };
   }, [isOpen]);
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto" style={{ minHeight: '-webkit-fill-available' }}>
-          {/* Overlay con animación de fade suave */}
-          <motion.div
-            variants={overlayVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="fixed inset-0 bg-black/60 -z-10"
-            style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
-            onClick={onClose}
-          />
+  if (!isOpen) return null;
 
-          {/* Modal Container con animación spring suave */}
-          <motion.div
-            variants={modalVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="relative bg-white rounded-2xl shadow-2xl w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-5xl overflow-hidden my-auto"
-          >
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto" style={{ minHeight: '-webkit-fill-available' }}>
+      {/* Overlay con blur */}
+      <div
+        ref={overlayRef}
+        className="fixed inset-0 bg-black/60 -z-10 opacity-0"
+        style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
+        onClick={handleClose}
+      />
+
+      {/* Modal Container */}
+      <div
+        ref={modalRef}
+        className="relative bg-white rounded-2xl shadow-2xl w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-5xl overflow-hidden my-auto"
+      >
         
-        {/* Botón de cerrar - Posición adaptativa */}
+        {/* Botón de cerrar */}
         <button
-          onClick={onClose}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-800 transition-colors shadow-md"
+          onClick={handleClose}
+          className="animate-in absolute top-3 right-3 sm:top-4 sm:right-4 z-10 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-800 transition-all hover:scale-110 hover:rotate-90"
           aria-label="Cerrar"
         >
           <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -189,11 +272,11 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           </svg>
         </button>
 
-        {/* Contenido compacto */}
+        {/* Contenido */}
         <div className="p-4 sm:p-5 lg:p-6">
           
-          {/* Header compacto con animación */}
-          <motion.div variants={contentVariants} className="text-center mb-4 sm:mb-5">
+          {/* Header */}
+          <div className="animate-in text-center mb-4 sm:mb-5">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 mb-2">
               Contáctanos
             </h2>
@@ -201,16 +284,15 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
               ¿Tienes un proyecto en mente? Completa el formulario.
             </p>
-          </motion.div>
+          </div>
 
-          {/* Grid compacto con animación */}
-          <motion.div variants={contentVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
+          {/* Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
             
-            {/* INFO DE CONTACTO - Compacta */}
-            <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-4 sm:p-5 text-white shadow-xl order-2 lg:order-1">
+            {/* INFO DE CONTACTO */}
+            <div className="animate-in bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-4 sm:p-5 text-white shadow-xl order-2 lg:order-1">
               <h3 className="text-base sm:text-lg font-bold mb-3">Información</h3>
               
-              {/* Grid de información compacto */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5 sm:gap-3">
                 
                 <div className="flex items-start gap-2 sm:gap-2.5">
@@ -263,28 +345,26 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                 </div>
               </div>
 
-              {/* Redes sociales compactas */}
+              {/* Redes sociales */}
               <div className="hidden lg:block mt-3 pt-3 border-t border-white/20">
                 <h4 className="font-semibold mb-2 text-xs">Síguenos</h4>
                 <div className="flex gap-2 flex-wrap">
-                  {/* Facebook */}
-                  <a href="https://www.facebook.com/profile.php?viewas=100000686899395&id=61584353451934" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-colors">
+                  <a href="https://www.facebook.com/share/p/17k94rcDJb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all hover:scale-110">
                     <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                     </svg>
                   </a>
-                  {/* Instagram */}
-                  <a href="https://www.instagram.com/kor4soft/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-colors">
+                  <a href="https://www.instagram.com/kor4soft?igsh=MXRqeXNlZ3YycHc0dw==" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all hover:scale-110">
                     <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.974 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.974-1.246-2.242-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.516 2.567 5.784 2.296 7.15 2.234 8.416 2.176 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.417 3.757 1.319c-.902.902-1.188 2.014-1.247 3.295C2.013 5.668 2 6.077 2 12c0 5.923.013 6.332.072 7.613.059 1.281.345 2.393 1.247 3.295.902.902 2.014 1.188 3.295 1.247C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.281-.059 2.393-.345 3.295-1.247.902-.902 1.188-2.014 1.247-3.295.059-1.281.072-1.69.072-7.613 0-5.923-.013-6.332-.072-7.613-.059-1.281-.345-2.393-1.247-3.295-.902-.902-2.014-1.188-3.295-1.247C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* FORMULARIO compacto */}
-            <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-lg order-1 lg:order-2">
+            {/* FORMULARIO */}
+            <div className="animate-in bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-lg order-1 lg:order-2">
               <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
                 
                 {/* Nombre */}
@@ -421,7 +501,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="w-full px-4 py-2 text-sm bg-slate-700 hover:bg-slate-800 text-white rounded-xl font-semibold transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-2 text-sm bg-slate-700 hover:bg-slate-800 text-white rounded-xl font-semibold transition-all disabled:bg-slate-400 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
                 >
                   {status === "sending" ? "Enviando..." : status === "success" ? "¡Mensaje enviado!" : "Enviar mensaje"}
                 </button>
@@ -440,11 +520,9 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                 )}
               </form>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
-      )}
-    </AnimatePresence>
   );
 }

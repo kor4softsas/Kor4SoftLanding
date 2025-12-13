@@ -162,9 +162,9 @@ export default function Hero() {
           </h1>
 
           {/* Tagline */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-10 max-w-2xl mx-auto leading-relaxed font-medium">
             Transformamos ideas en experiencias digitales excepcionales.
-            <span className="block mt-2 text-slate-500 font-normal">
+            <span className="block mt-2 text-slate-600 font-normal">
               Desarrollo web y móvil de alto impacto en Colombia.
             </span>
           </p>
@@ -172,7 +172,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-16 w-full sm:w-auto">
             <button
-              onClick={() => (window as any).openContactModal()}
+              onClick={(e) => (window as any).openContactModal(e.currentTarget)}
               className="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold text-lg hover:bg-slate-800 transition-all duration-300 shadow-lg hover:shadow-slate-900/25 hover:-translate-y-1 flex items-center justify-center gap-2 group"
             >
               Iniciar Proyecto
@@ -209,7 +209,7 @@ export default function Hero() {
                 )}
               </AnimatePresence>
               <div className={`absolute -inset-2 bg-blue-50 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'react' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
-              <button onClick={() => handleTechClick('react')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'react' ? 'scale-110 border-blue-300 ring-2 ring-blue-200' : 'border-slate-100 hover:scale-110'}`}>
+              <button onClick={() => handleTechClick('react')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer hover:shadow-xl ${selectedTech === 'react' ? 'scale-110 border-blue-300 ring-2 ring-blue-200 shadow-blue-200/50' : 'border-slate-100 hover:scale-110 hover:border-blue-200'}`}>
                 <Image src="/icons/react.svg" alt="React" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 object-contain animate-spin-slow" />
               </button>
             </div>
@@ -232,7 +232,7 @@ export default function Hero() {
                 )}
               </AnimatePresence>
               <div className={`absolute -inset-2 bg-slate-200 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'nextjs' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
-              <button onClick={() => handleTechClick('nextjs')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'nextjs' ? 'scale-110 border-slate-400 ring-2 ring-slate-300' : 'border-slate-100 hover:scale-110'}`}>
+              <button onClick={() => handleTechClick('nextjs')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer hover:shadow-xl ${selectedTech === 'nextjs' ? 'scale-110 border-slate-400 ring-2 ring-slate-300 shadow-slate-300/50' : 'border-slate-100 hover:scale-110 hover:border-slate-300'}`}>
                 <Image src="/icons/nextjs.svg" alt="Next.js" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </button>
             </div>
@@ -265,7 +265,7 @@ export default function Hero() {
                 )}
               </AnimatePresence>
               <div className={`absolute -inset-2 bg-red-50 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'laravel' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
-              <button onClick={() => handleTechClick('laravel')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'laravel' ? 'scale-110 border-red-300 ring-2 ring-red-200' : 'border-slate-100 hover:scale-110'}`}>
+              <button onClick={() => handleTechClick('laravel')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer hover:shadow-xl ${selectedTech === 'laravel' ? 'scale-110 border-red-300 ring-2 ring-red-200 shadow-red-200/50' : 'border-slate-100 hover:scale-110 hover:border-red-200'}`}>
                 <Image src="/icons/laravel.svg" alt="Laravel" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </button>
             </div>
@@ -288,7 +288,7 @@ export default function Hero() {
                 )}
               </AnimatePresence>
               <div className={`absolute -inset-2 bg-green-50 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'nodejs' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
-              <button onClick={() => handleTechClick('nodejs')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'nodejs' ? 'scale-110 border-green-300 ring-2 ring-green-200' : 'border-slate-100 hover:scale-110'}`}>
+              <button onClick={() => handleTechClick('nodejs')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer hover:shadow-xl ${selectedTech === 'nodejs' ? 'scale-110 border-green-300 ring-2 ring-green-200 shadow-green-200/50' : 'border-slate-100 hover:scale-110 hover:border-green-200'}`}>
                 <Image src="/icons/nodejs.svg" alt="Node.js" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
               </button>
             </div>

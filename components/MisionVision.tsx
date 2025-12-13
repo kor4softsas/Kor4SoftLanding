@@ -11,7 +11,7 @@ export default function MisionVision() {
           Nuestra esencia
         </h2>
         <div className="w-24 h-1 bg-slate-700 mx-auto mb-5"></div>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-medium">
           Los principios que guían nuestro camino y definen nuestro propósito
         </p>
       </div>
@@ -39,12 +39,12 @@ export default function MisionVision() {
             </div>
 
             {/* Contenido */}
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed flex-1">
-              Kor4soft se caracteriza por <strong>diseñar y desarrollar soluciones digitales eficientes, seguras y accesibles</strong> que impulsen la productividad, automatización y transformación tecnológica de las empresas y emprendedores del país.
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed flex-1">
+              Kor4soft se caracteriza por <strong className="text-slate-900">diseñar y desarrollar soluciones digitales eficientes, seguras y accesibles</strong> que impulsen la productividad, automatización y transformación tecnológica de las empresas y emprendedores del país.
             </p>
             
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed mt-4">
-              Combinamos talento técnico, diseño centrado en el usuario y asesoría especializada para ofrecer <strong>herramientas innovadoras</strong> que respondan a necesidades reales y generen impacto sostenible en el territorio.
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-4">
+              Combinamos talento técnico, diseño centrado en el usuario y asesoría especializada para ofrecer <strong className="text-slate-900">herramientas innovadoras</strong> que respondan a necesidades reales y generen impacto sostenible en el territorio.
             </p>
           </div>
         </InView>

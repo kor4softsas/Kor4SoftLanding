@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SobreNosotros from "@/components/SobreNosotros";
@@ -17,10 +17,16 @@ import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [triggerButton, setTriggerButton] = useState<HTMLButtonElement | null>(null);
 
   // Función global para abrir el modal desde cualquier componente
   useEffect(() => {
-    (window as any).openContactModal = () => setIsContactModalOpen(true);
+    (window as any).openContactModal = (buttonElement?: HTMLButtonElement) => {
+      if (buttonElement) {
+        setTriggerButton(buttonElement);
+      }
+      setIsContactModalOpen(true);
+    };
     return () => {
       delete (window as any).openContactModal;
     };
@@ -77,7 +83,8 @@ export default function Home() {
       {/* Contact Modal Global */}
       <ContactForm 
         isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
+        onClose={() => setIsContactModalOpen(false)}
+        triggerButton={triggerButton}
       />
     </main>
   );

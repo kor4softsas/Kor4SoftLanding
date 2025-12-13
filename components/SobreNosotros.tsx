@@ -4,14 +4,14 @@ import { InView } from "./InView";
 
 export default function SobreNosotros() {
   return (
-    <section id="sobre-nosotros" className="container mx-auto px-4 py-12 sm:py-16 lg:py-20 max-w-7xl">
+    <section id="sobre-nosotros" className="container mx-auto px-4 py-16 sm:py-20 lg:py-24 max-w-7xl">
       {/* Header - Sistema de cajas con jerarquía clara */}
       <div className="text-center mb-10 sm:mb-14 lg:mb-16">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
           Sobre nosotros
         </h2>
         <div className="w-24 h-1 bg-slate-700 mx-auto mb-5"></div>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-medium">
           Conoce más sobre nuestra empresa y nuestra misión
         </p>
       </div>
@@ -33,13 +33,13 @@ export default function SobreNosotros() {
             Tu socio tecnológico de confianza
           </h3>
           
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
             Somos un equipo apasionado por la tecnología y comprometido con el éxito de nuestros clientes. 
-            En <strong>Kor4Soft</strong>, creemos que cada proyecto es único y merece una solución personalizada 
+            En <strong className="text-slate-900">Kor4Soft</strong>, creemos que cada proyecto es único y merece una solución personalizada 
             que se adapte perfectamente a las necesidades específicas de tu negocio.
           </p>
           
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
             Nuestra metodología de trabajo se basa en la comunicación constante, la transparencia y la entrega 
             de resultados de calidad. Trabajamos con un enfoque ágil que nos permite adaptarnos rápidamente a los 
             cambios y garantizar que cada línea de código cumpla con los más altos estándares de calidad y seguridad.
@@ -86,7 +86,7 @@ export default function SobreNosotros() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-slate-800 text-base mb-1">Experiencia Comprobada</h4>
-                    <p className="text-slate-600 text-sm mb-1.5">
+                    <p className="text-slate-700 text-sm mb-1.5">
                       Años de experiencia en desarrollo de software de alta calidad
                     </p>
                     <div className="flex items-center gap-1.5 text-slate-500 text-xs">
@@ -109,7 +109,7 @@ export default function SobreNosotros() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-slate-800 text-base mb-1">Equipo Profesional</h4>
-                    <p className="text-slate-600 text-sm mb-1.5">
+                    <p className="text-slate-700 text-sm mb-1.5">
                       Desarrolladores altamente capacitados y certificados en tecnologías modernas
                     </p>
                     <div className="flex items-center gap-1.5 text-slate-500 text-xs">
@@ -132,7 +132,7 @@ export default function SobreNosotros() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-slate-800 text-base mb-1">Soluciones Innovadoras</h4>
-                    <p className="text-slate-600 text-sm mb-1.5">
+                    <p className="text-slate-700 text-sm mb-1.5">
                       Tecnología de vanguardia y mejores prácticas de la industria
                     </p>
                     <div className="flex items-center gap-1.5 text-slate-500 text-xs">
@@ -155,7 +155,7 @@ export default function SobreNosotros() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-slate-800 text-base mb-1">Soporte Continuo</h4>
-                    <p className="text-slate-600 text-sm mb-1.5">
+                    <p className="text-slate-700 text-sm mb-1.5">
                       Acompañamiento y mantenimiento post-entrega para garantizar el éxito
                     </p>
                     <div className="flex items-center gap-1.5 text-slate-500 text-xs">

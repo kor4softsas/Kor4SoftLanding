@@ -160,7 +160,7 @@ export default function Stats() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
               Resultados que hablan por sí mismos
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto font-medium">
               Nuestra trayectoria respalda la calidad de nuestro trabajo
             </p>
           </div>

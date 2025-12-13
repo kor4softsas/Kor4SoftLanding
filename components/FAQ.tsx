@@ -45,7 +45,7 @@ export default function FAQ() {
           Preguntas frecuentes
         </h2>
         <div className="w-24 h-1 bg-slate-700 mx-auto mb-5"></div>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto font-medium">
           Resolvemos tus dudas más comunes
         </p>
       </div>
@@ -96,7 +96,7 @@ export default function FAQ() {
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+                  <div className="px-6 pb-5 text-slate-700 text-sm sm:text-base leading-relaxed">
                     {faq.answer}
                   </div>
                 </motion.div>

@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+
+const inter = Inter({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Kor4Soft | Desarrollo de Software y Apps Móviles en Colombia",
@@ -63,8 +71,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es">
-      <body>
+    <html lang="es" className={inter.variable}>
+      <body className={inter.className}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
