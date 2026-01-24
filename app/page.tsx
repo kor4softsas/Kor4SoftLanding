@@ -46,7 +46,7 @@ export default function Home() {
       {/* Header fuera del contenedor z-10 para mejor efecto blur */}
       <Header />
 
-      <div className="relative z-10 pt-24">
+      <div className="relative z-10">
         <Hero />
         
         {/* Sobre Nosotros Section */}
