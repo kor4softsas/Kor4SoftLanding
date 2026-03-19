@@ -55,23 +55,9 @@ export default function Header() {
               <NavContent />
             </div>
           ) : (
-          <glass-element
-            auto-size="true"
-            radius="24"
-            depth="8"
-            blur="5"
-            strength="60"
-            background-color="rgba(255, 255, 255, 0.55)"
-            chromatic-aberration="1"
-            min-width="300"
-            min-height="60"
-            style={{
-              '--glass-padding': '16px 24px',
-              pointerEvents: 'auto',
-            } as any}
-          >
+          <GlassNav>
             <NavContent />
-          </glass-element>
+          </GlassNav>
           )}
         </div>
       </div>
@@ -79,3 +65,32 @@ export default function Header() {
   );
 }
 
+// Componente separado que usa ref para setear los atributos imperativamente,
+// evitando que React intente asignarlos como propiedades DOM (lo que crashea
+// cuando el custom element solo tiene getters).
+function GlassNav({ children }: { children: React.ReactNode }) {
+  const ref = (el: HTMLElement | null) => {
+    if (!el) return;
+    el.setAttribute('auto-size', 'true');
+    el.setAttribute('radius', '24');
+    el.setAttribute('depth', '8');
+    el.setAttribute('blur', '5');
+    el.setAttribute('strength', '60');
+    el.setAttribute('background-color', 'rgba(255, 255, 255, 0.55)');
+    el.setAttribute('chromatic-aberration', '1');
+    el.setAttribute('min-width', '300');
+    el.setAttribute('min-height', '60');
+  };
+
+  return (
+    <glass-element
+      ref={ref}
+      style={{
+        '--glass-padding': '16px 24px',
+        pointerEvents: 'auto',
+      } as any}
+    >
+      {children}
+    </glass-element>
+  );
+}

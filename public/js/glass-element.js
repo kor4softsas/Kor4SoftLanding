@@ -153,59 +153,76 @@ class GlassElement extends HTMLElement {
         }
     }
 
-    // Getters para los atributos con valores por defecto
+    // Getters/Setters para los atributos con valores por defecto
+    // Los setters son necesarios para que React pueda asignar props sin errores.
     get width() {
         return parseInt(this.getAttribute('width')) || 200;
     }
+    set width(val) { this.setAttribute('width', val); }
 
     get height() {
         return parseInt(this.getAttribute('height')) || 200;
     }
+    set height(val) { this.setAttribute('height', val); }
 
     get radius() {
         return parseInt(this.getAttribute('radius')) || 50;
     }
+    set radius(val) { this.setAttribute('radius', val); }
 
     get baseDepth() {
         return parseInt(this.getAttribute('depth')) || 10;
     }
+    set baseDepth(val) { this.setAttribute('depth', val); }
 
     get blur() {
         return parseInt(this.getAttribute('blur')) || 2;
     }
+    set blur(val) { this.setAttribute('blur', val); }
 
     get strength() {
         return parseInt(this.getAttribute('strength')) || 100;
     }
+    set strength(val) { this.setAttribute('strength', val); }
 
     get chromaticAberration() {
         return parseInt(this.getAttribute('chromatic-aberration')) || 0;
     }
+    set chromaticAberration(val) { this.setAttribute('chromatic-aberration', val); }
 
     get debug() {
         return this.getAttribute('debug') === 'true';
     }
+    set debug(val) { this.setAttribute('debug', val); }
 
     get backgroundColor() {
         return this.getAttribute('background-color') || 'rgba(255, 255, 255, 0.4)';
     }
+    set backgroundColor(val) { this.setAttribute('background-color', val); }
 
     get autoSize() {
         return this.hasAttribute('auto-size');
+    }
+    set autoSize(val) {
+        if (val) { this.setAttribute('auto-size', ''); }
+        else { this.removeAttribute('auto-size'); }
     }
 
     get minWidth() {
         return parseInt(this.getAttribute('min-width')) || 0;
     }
+    set minWidth(val) { this.setAttribute('min-width', val); }
 
     get minHeight() {
         return parseInt(this.getAttribute('min-height')) || 0;
     }
+    set minHeight(val) { this.setAttribute('min-height', val); }
 
     // Profundidad estática (sin efecto de click)
     get depth() {
         return this.baseDepth;
     }
+    set depth(val) { this.setAttribute('depth', val); }
 
     updateStyles() {
         const glassBox = this.shadowRoot.querySelector('.glass-box');

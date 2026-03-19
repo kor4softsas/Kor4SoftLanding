@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
-import dynamic from "next/dynamic";
+import SmoothScrollWrapper from "@/components/SmoothScrollWrapper";
 import "./globals.css";
-
-const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), {
-  ssr: false,
-});
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -76,17 +72,25 @@ export default function RootLayout({
 
   return (
     <html lang="es" className={inter.variable}>
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8399016875001290"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className={inter.className}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <SmoothScroll>
+        <SmoothScrollWrapper>
           {children}
-        </SmoothScroll>
+        </SmoothScrollWrapper>
         {/* Scripts necesarios para el navbar glass-element */}
-        <Script src="/js/displacement-utils.js" strategy="beforeInteractive" />
-        <Script src="/js/glass-element.js" strategy="beforeInteractive" />
+        <Script src="/js/displacement-utils.js?v=2" strategy="beforeInteractive" />
+        <Script src="/js/glass-element.js?v=2" strategy="beforeInteractive" />
       </body>
     </html>
   );
