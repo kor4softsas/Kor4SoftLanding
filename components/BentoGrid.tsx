@@ -16,7 +16,7 @@ export default function BentoGrid() {
       </div>
 
       {/* Servicios Principales - Grid mejorado */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mb-16">
+      <div className="grid grid-cols-1 max-w-4xl mx-auto gap-8 lg:gap-10 mb-16">
 
         {/* Desarrollo Web - Card destacada */}
         <InView
@@ -93,71 +93,7 @@ export default function BentoGrid() {
         </InView>
 
         {/* Aplicaciones Móviles - Card destacada */}
-        <InView
-          variants={{
-            hidden: { opacity: 0, y: 30, scale: 0.95 },
-            visible: { opacity: 1, y: 0, scale: 1 }
-          }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="group h-full bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:border-slate-300 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-150 group-hover:bg-slate-100/50"></div>
-
-            <div className="relative z-10">
-              {/* Icono */}
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-16 h-16 bg-slate-700 rounded-2xl flex items-center justify-center shadow-lg shadow-slate-700/20">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                </div>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors">Aplicaciones móviles</h3>
-              <p className="text-slate-700 text-base sm:text-lg leading-relaxed mb-8">
-                Apps nativas e híbridas para iOS y Android que conectan con tu audiencia donde estén.
-              </p>
-
-              {/* Ventajas */}
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-3.5 h-3.5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-base text-slate-700 font-medium">iOS y Android</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-3.5 h-3.5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-base text-slate-700 font-medium">Entrega rápida</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-3.5 h-3.5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-base text-slate-700 font-medium">UX optimizada</span>
-                </div>
-              </div>
-
-              {/* Badge inferior */}
-              <div className="pt-6 border-t border-slate-100">
-                <div className="flex items-center gap-2 text-slate-600">
-                  <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-sm font-semibold">Desarrollo ágil</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </InView>
+        
       </div>
 
       {/* Servicios Secundarios - Grid compacto */}

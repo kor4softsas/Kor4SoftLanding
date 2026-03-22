@@ -14,7 +14,7 @@ export default function Footer() {
 
       <div className="container mx-auto px-4 py-12 sm:py-16 max-w-7xl relative z-10">
         {/* Grid principal - Sistema de cajas responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-8">
           
           {/* Columna 1: Logo y descripción */}
           <div className="sm:col-span-2 lg:col-span-1">
@@ -29,7 +29,7 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">Kor4Soft</span>
             </div>
             <p className="text-sm leading-relaxed mb-4">
-              Soluciones tecnológicas innovadoras para impulsar tu negocio. Desarrollo web, aplicaciones móviles y automatización.
+              Soluciones tecnológicas innovadoras para impulsar tu negocio. Desarrollo web.
             </p>
             {/* Redes sociales */}
             <div className="flex gap-3">
@@ -115,9 +115,6 @@ export default function Footer() {
                 <span className="text-sm">Desarrollo web</span>
               </li>
               <li>
-                <span className="text-sm">Aplicaciones móviles</span>
-              </li>
-              <li>
                 <span className="text-sm">Automatización</span>
               </li>
               <li>
@@ -127,45 +124,7 @@ export default function Footer() {
           </div>
 
           {/* Columna 4: Newsletter */}
-          <div>
-            <h3 className="text-white font-bold text-lg mb-4">Mantente informado</h3>
-            <p className="text-sm text-slate-300 mb-4">
-              Recibe noticias sobre tecnología y nuestros últimos proyectos
-            </p>
-            <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); alert('¡Gracias por suscribirte! Pronto recibirás nuestras novedades.'); }}>
-              <input
-                type="email"
-                placeholder="tu@email.com"
-                className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-500/50 transition-all text-sm"
-                required
-              />
-              <button
-                type="submit"
-                className="w-full px-4 py-2.5 bg-white text-slate-900 rounded-lg font-semibold text-sm hover:bg-slate-100 transition-all duration-300 hover:shadow-lg"
-              >
-                Suscribirse
-              </button>
-            </form>
-            <div className="mt-4 pt-4 border-t border-slate-800">
-              <h4 className="text-white font-semibold text-sm mb-2">Contacto</h4>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <a href="mailto:kor4softsas@gmail.com" className="text-xs hover:text-white transition-colors">
-                    kor4softsas@gmail.com
-                  </a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <span className="text-xs">+57 (318) 188-3915</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          
         </div>
 
         {/* Divider */}

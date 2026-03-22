@@ -14,24 +14,24 @@ export default function Portfolio() {
       href: "https://fitovida.k4soft.com",
       resultados: "Aumento del 40% en productividad",
     },
-    {
-      id: 2,
-      nombre: "App Móvil de E-commerce",
-      categoria: "Aplicación móvil",
-      descripcion: "Aplicación nativa para iOS y Android con pasarela de pagos integrada y sistema de notificaciones.",
-      tecnologias: ["React Native", "Firebase", "Stripe"],
-      imagen: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
-      resultados: "10,000+ descargas en 3 meses",
-    },
-    {
-      id: 3,
-      nombre: "Sistema de Automatización",
-      categoria: "Automatización",
-      descripcion: "Herramienta de automatización de procesos empresariales que reduce tareas manuales en un 70%.",
-      tecnologias: ["Python", "Laravel", "MySQL"],
-      imagen: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      resultados: "Ahorro de 20 horas semanales",
-    },
+    // {
+    //   id: 2,
+    //   nombre: "App Móvil de E-commerce",
+    //   categoria: "Aplicación móvil",
+    //   descripcion: "Aplicación nativa para iOS y Android con pasarela de pagos integrada y sistema de notificaciones.",
+    //   tecnologias: ["React Native", "Firebase", "Stripe"],
+    //   imagen: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
+    //   resultados: "10,000+ descargas en 3 meses",
+    // },
+    // {
+    //   id: 3,
+    //   nombre: "Sistema de Automatización",
+    //   categoria: "Automatización",
+    //   descripcion: "Herramienta de automatización de procesos empresariales que reduce tareas manuales en un 70%.",
+    //   tecnologias: ["Python", "Laravel", "MySQL"],
+    //   imagen: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    //   resultados: "Ahorro de 20 horas semanales",
+    // },
   ];
 
   return (
@@ -48,7 +48,7 @@ export default function Portfolio() {
       </div>
 
       {/* Grid de proyectos - Rearreglo con propósito */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 max-w-md mx-auto gap-6 lg:gap-8">
         {proyectos.map((proyecto, index) => (
           <InView
             key={proyecto.id}

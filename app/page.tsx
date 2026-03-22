@@ -51,12 +51,12 @@ export default function Home() {
         
         {/* Sobre Nosotros Section */}
         <SobreNosotros />
-        
+
         {/* Mision y Vision Section */}
         <MisionVision />
         
-        {/* Stats Section */}
-        <Stats />
+        {/* Stats Section
+        <Stats /> */}
         
         {/* Servicios Section */}
         <BentoGrid />
@@ -64,8 +64,8 @@ export default function Home() {
         {/* Portfolio Section */}
         <Portfolio />
         
-        {/* Testimonials Section */}
-        <Testimonials />
+        {/* Testimonials Section
+        <Testimonials /> */}
         
         {/* FAQ Section */}
         <FAQ />

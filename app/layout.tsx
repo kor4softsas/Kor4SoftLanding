@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Kor4Soft | Desarrollo de Software y Apps Móviles en Colombia",
-  description: "Agencia de desarrollo de software en Colombia. Expertos en desarrollo web, aplicaciones móviles (iOS/Android) y automatización de procesos. Transformación digital en Cali, Bogotá y Medellín.",
+  description: "Agencia de desarrollo de software en Colombia. Expertos en desarrollo web. Transformación digital en Colombia.",
   keywords: ["desarrollo software colombia", "apps móviles cali", "desarrollo web bogotá", "agencia digital colombia", "automatización de procesos", "kor4soft", "react native colombia", "nextjs developers"],
   icons: {
     icon: "/Logo.png",

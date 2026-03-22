@@ -68,44 +68,44 @@ export default function Hero() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=250%",
-          scrub: 1,
+          end: "+=120%",
+          scrub: 0.5,
           pin: true,
         },
       });
 
       // Todas las animaciones empiezan simultáneamente
       
-      // Animación del mask: de grande a pequeño (retrasada y más lenta)
+      // Animación del mask: de grande a pequeño
       tl.to(logoMaskRef.current, {
         maskSize: "50vh",
         WebkitMaskSize: "50vh",
-        duration: 2.0,
-      }, 0.3);
+        duration: 1.0,
+      }, 0);
 
       // Solo el fondo cambia de escala
       tl.to(heroKeyRef.current, {
         scale: 1,
-        duration: 1.0,
+        duration: 0.8,
       }, 0);
 
-      // Fade out del contenido (logo, texto, badge) - más tarde y más lento
+      // Fade out del contenido (logo, texto, badge)
       tl.to(heroContentRef.current, {
         opacity: 0,
-        duration: 1.5,
-      }, 0.5);
+        duration: 0.8,
+      }, 0.2);
 
       // Fade out del indicador de scroll
       tl.to(scrollIndicatorRef.current, {
         opacity: 0,
-        duration: 0.5,
-      }, 0.3);
+        duration: 0.3,
+      }, 0);
 
-      // Fade out final del fondo (mucho después, cuando el mask ya es pequeño)
+      // Fade out final del fondo
       tl.to(heroKeyRef.current, {
         opacity: 0,
-        duration: 0.6,
-      }, 1.8);
+        duration: 0.4,
+      }, 0.8);
 
     }, sectionRef);
 
