@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import SmoothScrollWrapper from "@/components/SmoothScrollWrapper";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 import "./globals.css";
 
 const inter = Inter({ 
@@ -76,6 +77,20 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <head>
+        <Script id="consent-mode-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              wait_for_update: 500
+            });
+          `}
+        </Script>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8399016875001290"
@@ -91,9 +106,10 @@ export default function RootLayout({
         <SmoothScrollWrapper>
           {children}
         </SmoothScrollWrapper>
+        <CookieConsentBanner />
         {/* Scripts necesarios para el navbar glass-element */}
-        <Script src="/js/displacement-utils.js?v=2" strategy="beforeInteractive" />
-        <Script src="/js/glass-element.js?v=2" strategy="beforeInteractive" />
+        <Script src="/js/displacement-utils.js?v=2" strategy="afterInteractive" />
+        <Script src="/js/glass-element.js?v=2" strategy="afterInteractive" />
       </body>
     </html>
   );

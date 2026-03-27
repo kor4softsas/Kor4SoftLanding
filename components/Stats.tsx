@@ -55,7 +55,7 @@ function AnimatedNumber({ end, duration, suffix = "", prefix = "" }: StatProps) 
 export default function Stats() {
   const stats = [
     {
-      value: 50,
+      value: 20,
       suffix: "+",
       label: "Proyectos completados",
       icon: (
@@ -65,9 +65,9 @@ export default function Stats() {
       ),
     },
     {
-      value: 98,
-      suffix: "%",
-      label: "Satisfacción de clientes",
+      value: 24,
+      suffix: "h",
+      label: "Tiempo objetivo de primera respuesta",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -85,7 +85,7 @@ export default function Stats() {
       ),
     },
     {
-      value: 30,
+      value: 15,
       suffix: "+",
       label: "Clientes activos",
       icon: (

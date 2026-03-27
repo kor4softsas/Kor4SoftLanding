@@ -22,7 +22,7 @@ const techData = {
     name: "Next.js",
     color: "bg-slate-900",
     description: "El framework de React para producción con renderizado híbrido.",
-    highlight: "Potencia TikTok, Twitch y esta página.",
+    highlight: "Tecnologia enfocada en rendimiento, SEO y escalabilidad.",
   },
   laravel: {
     name: "Laravel",

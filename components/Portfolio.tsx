@@ -12,7 +12,7 @@ export default function Portfolio() {
       tecnologias: ["Next.js ", "Node.js", "MySQL"],
       imagen: "/fitovida-products.png",
       href: "https://fitovida.k4soft.com",
-      resultados: "Aumento del 40% en productividad",
+      resultados: "Mejora en eficiencia operativa y gestion digital",
     },
     // {
     //   id: 2,
