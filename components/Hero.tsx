@@ -225,7 +225,7 @@ export default function Hero() {
                 </AnimatePresence>
                 <div className={`absolute -inset-2 bg-red-50 rounded-full blur-md transition-opacity duration-300 ${selectedTech === 'laravel' ? 'opacity-100' : 'opacity-0 hover:opacity-100'}`}></div>
                 <button onClick={() => handleTechClick('laravel')} className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg border flex items-center justify-center transition-all duration-300 cursor-pointer ${selectedTech === 'laravel' ? 'scale-110 border-red-300 ring-2 ring-red-200' : 'border-slate-100 hover:scale-110'}`}>
-                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png" alt="Laravel" width={32} height={32} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" unoptimized />
+                  <Image src="/icons/laravel.svg" alt="Laravel" width={32} height={32} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
                 </button>
               </div>
 
