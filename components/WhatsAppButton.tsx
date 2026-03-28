@@ -23,9 +23,12 @@ export default function WhatsAppButton() {
         stiffness: 260,
         damping: 20
       }}
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center group"
+      className="fixed bottom-12 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center group"
       aria-label="Contactar por WhatsApp"
     >
+      {/* Ping/Outline Animation Effect */}
+      <span className="absolute inset-0 rounded-full border-2 border-green-500 animate-ping opacity-75 pointer-events-none"></span>
+
       {/* WhatsApp Icon */}
       <svg 
         className="w-8 h-8 sm:w-9 sm:h-9" 
