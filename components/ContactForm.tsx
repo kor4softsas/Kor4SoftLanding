@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
+import Link from "next/link";
 
 interface ContactFormProps {
   isOpen: boolean;
@@ -21,8 +22,12 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
 
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [renderedAt, setRenderedAt] = useState<number>(Date.now());
   const modalRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   const subjectOptions = [
     { value: "desarrollo-web", label: "Desarrollo Web" },
@@ -42,6 +47,12 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!acceptedPrivacy) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
 
     try {
@@ -49,8 +60,13 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          honeypot,
+          renderedAt,
+        }),
       });
 
       const data = await response.json();
@@ -69,6 +85,8 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
           asunto: "",
           mensaje: ""
         });
+        setAcceptedPrivacy(false);
+        setHoneypot("");
         setStatus("idle");
         onClose();
       }, 2500);
@@ -235,6 +253,10 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      setRenderedAt(Date.now());
+      setTimeout(() => {
+        nameInputRef.current?.focus();
+      }, 150);
     } else {
       document.body.style.overflow = "unset";
     }
@@ -284,6 +306,7 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
             <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
               ¿Tienes un proyecto en mente? Completa el formulario.
             </p>
+            <p className="mt-1 text-[11px] text-slate-500">Presiona Esc o usa el boton X para cerrar.</p>
           </div>
 
           {/* Grid */}
@@ -376,6 +399,16 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
             {/* FORMULARIO */}
             <div className="animate-in bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-lg order-1 lg:order-2">
               <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                />
                 
                 {/* Nombre */}
                 <div>
@@ -386,6 +419,7 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
                     type="text"
                     id="nombre"
                     name="nombre"
+                    ref={nameInputRef}
                     value={formData.nombre}
                     onChange={handleChange}
                     required
@@ -507,10 +541,28 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
                   />
                 </div>
 
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                  <label className="flex items-start gap-2 text-xs text-slate-700">
+                    <input
+                      type="checkbox"
+                      checked={acceptedPrivacy}
+                      onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+                      className="mt-0.5 h-4 w-4 rounded border-slate-300 text-slate-700 focus:ring-slate-700"
+                    />
+                    <span>
+                      Acepto la recopilacion y tratamiento de mis datos segun la{" "}
+                      <Link href="/privacy-policy" className="font-semibold underline underline-offset-2">
+                        politica de privacidad
+                      </Link>
+                      .
+                    </span>
+                  </label>
+                </div>
+
                 {/* Botón de envío */}
                 <button
                   type="submit"
-                  disabled={status === "sending"}
+                  disabled={status === "sending" || !acceptedPrivacy}
                   className="w-full px-4 py-2 text-sm bg-slate-700 hover:bg-slate-800 text-white rounded-xl font-semibold transition-all disabled:bg-slate-400 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
                 >
                   {status === "sending" ? "Enviando..." : status === "success" ? "¡Mensaje enviado!" : "Enviar mensaje"}
@@ -525,7 +577,9 @@ export default function ContactForm({ isOpen, onClose, triggerButton }: ContactF
 
                 {status === "error" && (
                   <div className="p-2.5 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs text-center">
-                    Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.
+                    {!acceptedPrivacy
+                      ? "Debes aceptar la politica de privacidad para enviar el formulario."
+                      : "Hubo un error al enviar el mensaje. Por favor, intenta nuevamente."}
                   </div>
                 )}
               </form>
